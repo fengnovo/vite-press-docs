@@ -1,14 +1,17 @@
 import { defineConfig } from 'vitepress'
 
+const base = '/vite-press-docs/'
+
 export default defineConfig({
   lang: 'zh-CN',
   title: '前端前沿技术爱好者',
   description: '关于工程、产品与持续写作的个人博客',
+  base,
   cleanUrls: true,
   appearance: true,
   head: [
-    ['link', { rel: 'icon', type: 'image/png', href: '/images/9670320.png' }],
-    ['link', { rel: 'apple-touch-icon', href: '/images/9670320.png' }],
+    ['link', { rel: 'icon', type: 'image/png', href: `${base}images/9670320.png` }],
+    ['link', { rel: 'apple-touch-icon', href: `${base}images/9670320.png` }],
     ['meta', { name: 'theme-color', content: '#243b3b' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:title', content: '前端前沿技术爱好者' }],
@@ -40,7 +43,7 @@ export default defineConfig({
       { icon: 'github', link: 'https://github.com/fengnovo' }
     ],
     footer: {
-      message: '<a class="beian-link" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=41102402000277" target="_blank" rel="noreferrer"><img src="/images/logo01.6189a29f.png" alt="" />粤ICP备2025494808号</a>'
+      message: `<a class="beian-link" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=41102402000277" target="_blank" rel="noreferrer"><img src="${base}images/logo01.6189a29f.png" alt="" />粤ICP备2025494808号</a>`
     },
     search: {
       provider: 'local'

@@ -13,8 +13,8 @@ layout: home
         更在意把真实问题拆开，把可复用的经验留下来。
       </p>
       <div class="blog-hero__actions">
-        <a class="blog-button blog-button--primary" href="/posts/">阅读文章</a>
-        <a class="blog-button" href="/about">了解我</a>
+        <a class="blog-button blog-button--primary" href="posts/">阅读文章</a>
+        <a class="blog-button" href="about">了解我</a>
       </div>
     </div>
   </section>
@@ -25,19 +25,19 @@ layout: home
       <p>从一个实际问题出发，写清楚背景、取舍、实现和复盘。</p>
     </div>
     <div class="post-grid">
-      <a class="post-card" href="/posts/frontend-monitoring-platform">
+      <a class="post-card" href="posts/frontend-monitoring-platform">
         <time>2026-06-25</time>
         <h3>前端监控告警平台：从 SDK 到 SourceMap 和告警闭环</h3>
         <p>拆解浏览器 SDK、插件采集、批量上报、离线缓存、错误聚合和告警分级。</p>
         <span>阅读全文</span>
       </a>
-      <a class="post-card" href="/posts/universal-audit-designer">
+      <a class="post-card" href="posts/universal-audit-designer">
         <time>2026-06-25</time>
         <h3>通用审核系统：用 X6 画出审批流程</h3>
         <p>拆解角色分工、流程编排、节点连线属性、JSON 导出和前端演示边界。</p>
         <span>阅读全文</span>
       </a>
-      <a class="post-card" href="/posts/dynamic-questionnaire-sdk">
+      <a class="post-card" href="posts/dynamic-questionnaire-sdk">
         <time>2026-06-25</time>
         <h3>通用动态问卷：用 JSON 配置驱动多步骤表单</h3>
         <p>拆解三份 JSON、运行时字段解析、条件联动、步骤校验和提交闭环。</p>
