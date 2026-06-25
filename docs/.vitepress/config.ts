@@ -1,6 +1,6 @@
 import { defineConfig } from 'vitepress'
 
-const base = '/vite-press-docs/'
+const base = process.env.VITEPRESS_BASE || '/vite-press-docs/'
 
 export default defineConfig({
   lang: 'zh-CN',
