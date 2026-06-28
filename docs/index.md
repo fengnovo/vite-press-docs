@@ -43,12 +43,6 @@ layout: home
         <p>拆解角色分工、流程编排、节点连线属性、JSON 导出和前端演示边界。</p>
         <span>阅读全文</span>
       </a>
-      <a class="post-card" href="posts/dynamic-questionnaire-sdk">
-        <time>2026-06-25</time>
-        <h3>通用动态问卷：用 JSON 配置驱动多步骤表单</h3>
-        <p>拆解三份 JSON、运行时字段解析、条件联动、步骤校验和提交闭环。</p>
-        <span>阅读全文</span>
-      </a>
     </div>
   </section>
 
