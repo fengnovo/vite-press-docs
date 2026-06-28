@@ -1,4 +1,4 @@
-name: Deploy VitePress site to GitHub Pages
+name: Deploy VitePress site to ECS
 
 on:
   push:
@@ -7,15 +7,13 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: pages
+  group: ecs-deploy
   cancel-in-progress: false
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -32,29 +30,24 @@ jobs:
           node-version: 22
           cache: pnpm
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-        with:
-          enablement: true
-
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build
-        run: pnpm build
+      - name: Build server dist
+        run: pnpm build:server
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: docs/.vitepress/dist
+      - name: Pack dist
+        run: tar czf dist.tar.gz -C docs/.vitepress dist
 
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H 47.112.200.66 >> ~/.ssh/known_hosts
+
+      - name: Upload dist
+        run: scp dist.tar.gz vitepress-deploy@47.112.200.66:/opt/projects/vite-press-docs/
+
+      - name: Deploy dist
+        run: ssh vitepress-deploy@47.112.200.66 "cd /opt/projects/vite-press-docs && rm -rf dist && tar xzf dist.tar.gz"
