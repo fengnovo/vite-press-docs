@@ -5,6 +5,8 @@ date: 2026-06-25
 ---
 
 # 前端监控告警平台：从 SDK 到 SourceMap 和告警闭环
+git: https://github.com/fengnovo/web-error-monitoring   
+线上地址：https://monitor.keen-tech.top/  
 
 最近整理了一个从零实现的前端监控告警系统。它不只是一个浏览器埋点 SDK，而是一条完整链路：浏览器 SDK 采集事件，API 接收入库，服务端做 SourceMap 还原和错误聚合，告警引擎完成 P0-P3 分级与收敛，最后通过飞书 Webhook 通知，并在 React 管理台里展示结果。
 

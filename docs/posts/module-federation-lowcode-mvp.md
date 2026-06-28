@@ -5,6 +5,8 @@ date: 2026-06-25
 ---
 
 # 用 Module Federation 搭一个低代码平台
+git: https://github.com/fengnovo/lowcode-platform 
+线上地址：https://low-code-editor.keen-tech.top/  https://low-code-runtime.keen-tech.top/  
 
 最近整理了一个拖拽式低代码平台。它的目标不是一次性做出完整商业系统，而是先把低代码平台最核心的闭环跑通：设计器拖拽物料生成页面 Schema，渲染引擎根据 Schema 动态加载远程物料，运行时容器独立渲染已发布页面。
 

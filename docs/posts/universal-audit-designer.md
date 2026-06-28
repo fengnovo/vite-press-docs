@@ -5,6 +5,8 @@ date: 2026-06-25
 ---
 
 # 通用审核系统：用 X6 画出审批流程
+git: https://github.com/fengnovo/universal-audit 
+线上地址：https://universal-audit.keen-tech.top/designer?mode=demo&name=%E8%B4%B9%E7%94%A8%E6%8A%A5%E9%94%80%E6%B5%81%E7%A8%8B&owner=%E8%B4%A2%E5%8A%A1%E5%85%B1%E4%BA%AB%E4%B8%AD%E5%BF%83    
 
 最近整理了一个通用审核系统前端演示项目。它不连接真实后端接口，不接数据库，也不包含登录鉴权，而是用前端页面模拟审批工作台、流程管理、流程编排、待办已办和发起审批这些核心场景。
 

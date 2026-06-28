@@ -5,6 +5,8 @@ date: 2026-06-25
 ---
 
 # Logic Composer：用 DSL 驱动一个智能工作流编排器
+git: https://github.com/fengnovo/logic-composer  
+线上地址：https://logic-composer.keen-tech.top/ 
 
 `logic-composer` 是一个本地运行的智能工作流编排项目。它的使用方式很直观：在画布上拖节点、连线、配置属性，然后保存、校验、发布、运行。用户看到的是一个可视化工作台，但真正值得拆解的是它背后的边界设计：画布不是最终执行依据，稳定的工作流 DSL 才是。
 

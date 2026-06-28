@@ -5,6 +5,8 @@ date: 2026-06-25
 ---
 
 # 通用动态问卷：用 JSON 配置驱动多步骤表单
+git: https://github.com/fengnovo/general-questionnaire-sdk   
+线上地址：https://questionnaire.keen-tech.top/questionnaire/kyc-questionnaire   
 
 最近整理了一个通用动态问卷示例。它基于 Next.js、React、TypeScript 和 Tailwind CSS 实现，页面本身是静态生成的问卷入口，真正的问卷内容在浏览器运行时通过接口读取。
 

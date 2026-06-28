@@ -5,6 +5,8 @@ date: 2026-06-28
 ---
 
 # AI Component Platform：把 AI 能力做成可灰度、可观测、可部署的组件
+git: https://gitlab.com/keen-ai-project/ai-component-platform   
+线上地址：https://staging-ai-component.keen-tech.top/  （测试环境） https://ai-component.keen-tech.top/  （线上环境）  
 
 最近整理了一个 AI Component Platform。它表面上是一个 React + TypeScript + Vite 的前端 SPA，但真正想解决的不是“怎么在页面上放一个 AI 按钮”，而是另一个更工程化的问题：当业务里不断出现文案生成、内容打标、智能客服、标题检测这些 AI 能力时，怎么避免每接一个能力就重写一遍调用模型、超时、重试、灰度、降级和埋点。
 
