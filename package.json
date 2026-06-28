@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vitepress dev docs --host 0.0.0.0",
+    "dev": "VITEPRESS_BASE=/ vitepress dev docs --host 0.0.0.0",
     "build": "vitepress build docs",
     "build:server": "VITEPRESS_BASE=/ vitepress build docs",
     "preview": "vitepress preview docs --host 0.0.0.0"
