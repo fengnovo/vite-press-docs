@@ -43,6 +43,10 @@
   width: 100% !important;
 }
 
+.VPDoc {
+  padding: 10px 24px  96px 24px !important;
+}
+
 .VPContent a,
 .VPDoc a,
 .VPHome a,

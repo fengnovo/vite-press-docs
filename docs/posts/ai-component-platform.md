@@ -1,7 +1,7 @@
 ---
 title: AI Component Platform：把 AI 能力做成可灰度、可观测、可部署的组件
 description: 复盘一个 React + TypeScript + Vite 的 AI 组件平台，拆解 Registry 协议、AISlot 状态机、A/B 灰度、调用埋点、DashScope 接入边界，以及 GitLab CI/CD 到阿里云 ECS 的部署方案
-date: 2026-06-28
+date: 2026-01-20
 ---
 
 # AI Component Platform：把 AI 能力做成可灰度、可观测、可部署的组件
@@ -226,3 +226,5 @@ CI/CD 的分工是：
 这套项目的价值不在于某一个 prompt 写得多好，而在于它把 AI 能力接入抽象成了工程系统：可注册、可灰度、可观测、可降级、可部署、可回滚。
 
 当 AI 功能从“试一下”进入“长期跑在线上”，这些基础设施会比单次模型调用更重要。
+
+最后更新：2026-01-20

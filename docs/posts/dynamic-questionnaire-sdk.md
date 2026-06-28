@@ -1,7 +1,7 @@
 ---
 title: 通用动态问卷：用 JSON 配置驱动多步骤表单
 description: 拆解一个基于 Next.js、React 和 TypeScript 的动态问卷系统，重点看三份 JSON、条件联动、运行时字段解析和提交闭环
-date: 2026-06-25
+date: 2025-10-20
 ---
 
 # 通用动态问卷：用 JSON 配置驱动多步骤表单
@@ -273,3 +273,5 @@ SelectField.onChange("country_of_residence", "US")
 不过这些都应该建立在当前几个边界上：schema 管展示，questionnaire 管步骤，options 管枚举，运行时根据答案快照解析字段状态。
 
 把这几个边界守住，动态问卷就不会变成一堆条件判断堆出来的表单页面。
+
+最后更新：2025-10-20

@@ -21,15 +21,13 @@ export default defineConfig({
     logo: '/images/9670320.png',
     nav: [
       { text: '首页', link: '/' },
-      { text: '文章', link: '/posts/' },
-      { text: '关于', link: '/about' }
+      { text: '项目', link: '/projects' }
     ],
     sidebar: {
       '/posts/': [
         {
           text: '文章',
           items: [
-            { text: '文章说明', link: '/posts/' },
             { text: 'AI Component Platform：把 AI 能力做成可灰度、可观测、可部署的组件', link: '/posts/ai-component-platform' },
             { text: '前端监控告警平台：从 SDK 到 SourceMap 和告警闭环', link: '/posts/frontend-monitoring-platform' },
             { text: '通用审核系统：用 X6 画出审批流程', link: '/posts/universal-audit-designer' },
@@ -49,9 +47,6 @@ export default defineConfig({
     search: {
       provider: 'local'
     },
-    lastUpdated: {
-      text: '最后更新'
-    },
     outline: {
       label: '本页目录'
     },
@@ -59,6 +54,5 @@ export default defineConfig({
       prev: '上一篇',
       next: '下一篇'
     }
-  },
-  lastUpdated: true
+  }
 })
