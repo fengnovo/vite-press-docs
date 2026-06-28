@@ -9,6 +9,13 @@ description: 文章迁移说明
 
 <div class="archive-list">
   <div class="archive-item">
+    <time>2026-06-28</time>
+    <div>
+      <a href="./ai-component-platform">AI Component Platform：把 AI 能力做成可灰度、可观测、可部署的组件</a>
+      <p class="post-meta">AI 组件化 · Registry · 灰度发布 · GitLab CI/CD</p>
+    </div>
+  </div>
+  <div class="archive-item">
     <time>2026-06-25</time>
     <div>
       <a href="./frontend-monitoring-platform">前端监控告警平台：从 SDK 到 SourceMap 和告警闭环</a>

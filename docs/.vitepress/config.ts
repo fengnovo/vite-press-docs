@@ -30,6 +30,7 @@ export default defineConfig({
           text: '文章',
           items: [
             { text: '文章说明', link: '/posts/' },
+            { text: 'AI Component Platform：把 AI 能力做成可灰度、可观测、可部署的组件', link: '/posts/ai-component-platform' },
             { text: '前端监控告警平台：从 SDK 到 SourceMap 和告警闭环', link: '/posts/frontend-monitoring-platform' },
             { text: '通用审核系统：用 X6 画出审批流程', link: '/posts/universal-audit-designer' },
             { text: '通用动态问卷：用 JSON 配置驱动多步骤表单', link: '/posts/dynamic-questionnaire-sdk' },

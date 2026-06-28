@@ -25,6 +25,12 @@ layout: home
       <p>从一个实际问题出发，写清楚背景、取舍、实现和复盘。</p>
     </div>
     <div class="post-grid">
+      <a class="post-card" href="posts/ai-component-platform">
+        <time>2026-06-28</time>
+        <h3>AI Component Platform：把 AI 能力做成可灰度、可观测、可部署的组件</h3>
+        <p>拆解 Registry 协议、AISlot 状态机、A/B 灰度、调用埋点和 GitLab CI/CD 部署。</p>
+        <span>阅读全文</span>
+      </a>
       <a class="post-card" href="posts/frontend-monitoring-platform">
         <time>2026-06-25</time>
         <h3>前端监控告警平台：从 SDK 到 SourceMap 和告警闭环</h3>
