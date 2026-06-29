@@ -12,6 +12,39 @@ git: https://github.com/fengnovo/universal-audit
 
 项目使用 Next.js、React、Tailwind CSS、AntV X6 和 lucide-react 实现。它更像一个产品原型和交互样板：先把审批系统里最重要的角色、页面和流程编排体验做出来，再把后端流转和数据存储留给后续接入。
 
+## 先用大白话理解
+
+审批系统可以先不要想得太复杂。它本质上就是三件事：
+
+<div class="lc-flow">
+  <div class="lc-flow__node">
+    <strong>1. 先定规则</strong>
+    <span>管理员先建一个审批流程模板，比如费用报销流程。</span>
+  </div>
+  <div class="lc-flow__arrow">→</div>
+  <div class="lc-flow__node">
+    <strong>2. 再画步骤</strong>
+    <span>流程管理员用 X6 画出开始、审批人、条件判断、通知和结束。</span>
+  </div>
+  <div class="lc-flow__arrow">→</div>
+  <div class="lc-flow__node">
+    <strong>3. 员工提交</strong>
+    <span>普通员工发起一张申请单，选择审批类型并填写金额、部门、说明。</span>
+  </div>
+  <div class="lc-flow__arrow">→</div>
+  <div class="lc-flow__node">
+    <strong>4. 系统派任务</strong>
+    <span>系统按流程模板，把审批任务流转给对应审批人。</span>
+  </div>
+  <div class="lc-flow__arrow">→</div>
+  <div class="lc-flow__node">
+    <strong>5. 审批人处理</strong>
+    <span>审批人在待办里点通过或驳回，流程继续或结束。</span>
+  </div>
+</div>
+
+所以这套系统不是单纯做几张表单，而是在表达一个核心关系：流程模板定义规则，申请单触发规则，审批任务按规则流转。
+
 ## 系统解决什么问题
 
 通用审核系统用于管理公司里的审批事项：
@@ -28,6 +61,29 @@ git: https://github.com/fengnovo/universal-audit
 ```
 
 这也是审核系统的主干：流程模板定义规则，申请单触发实例，审批任务按规则流转。
+
+从角色看，几类用户关心的东西完全不同：
+
+<div class="lc-protocol-grid">
+  <div>
+    <strong>普通员工</strong>
+    <span>只关心怎么发起审批、提交后流程会走到哪里。</span>
+  </div>
+  <div>
+    <strong>审批人</strong>
+    <span>只关心待办里有哪些任务，需要通过还是驳回。</span>
+  </div>
+  <div>
+    <strong>管理员</strong>
+    <span>关心有哪些流程模板、谁负责维护、当前是否启用。</span>
+  </div>
+  <div>
+    <strong>流程管理员</strong>
+    <span>关心流程步骤怎么画、节点怎么配置、连线怎么转向。</span>
+  </div>
+</div>
+
+这个项目做得比较清楚的一点，是没有把所有功能塞到一个页面里，而是按角色拆成工作台、流程管理、流程编排、待办已办和发起审批。
 
 ## 页面结构
 
@@ -59,6 +115,41 @@ git: https://github.com/fengnovo/universal-audit
 
 访问 `/apply`，普通员工填写审批类型、申请金额、申请部门、期望完成日期、审批标题、申请说明和附件。右侧会展示预计流转路径。
 
+这五个页面可以用一张图串起来：
+
+<div class="lc-architecture">
+  <div class="lc-lane">
+    <strong>审核工作台</strong>
+    <span>/</span>
+    <small>看待办、运行中流程、通过率、流程健康度和最近提交。</small>
+  </div>
+  <div class="lc-lane">
+    <strong>流程管理</strong>
+    <span>/processes</span>
+    <small>维护审批流程模板，新建流程后进入编排页面。</small>
+  </div>
+  <div class="lc-lane">
+    <strong>流程编排</strong>
+    <span>/designer</span>
+    <small>用 X6 画节点和连线，是整个演示项目的核心。</small>
+  </div>
+  <div class="lc-lane">
+    <strong>待办已办</strong>
+    <span>/tasks</span>
+    <small>审批人查看任务，执行通过或驳回。</small>
+  </div>
+  <div class="lc-lane">
+    <strong>发起审批</strong>
+    <span>/apply</span>
+    <small>员工填写申请表单，右侧展示预计流转路径。</small>
+  </div>
+  <div class="lc-lane">
+    <strong>本地存储</strong>
+    <span>localStorage</span>
+    <small>保存侧边栏状态和新建流程草稿，不代表真实后端。</small>
+  </div>
+</div>
+
 ## 流程编排的交互设计
 
 流程设计器启动时，会先创建 X6 画布，然后注册选择、键盘、剪贴板、历史记录和对齐线插件。
@@ -85,6 +176,19 @@ mode=new
 
 表示申请提交后，先进入审批人处理，然后流程结束。
 
+设计器里的操作可以拆成这条流水线：
+
+<div class="lc-sequence">
+  <div><b>进入设计器</b><span>创建 X6 画布，注册选择、键盘、剪贴板、历史记录和对齐线插件。</span></div>
+  <div><b>加载初始流程</b><span>demo 模式加载默认流程，new 模式加载开始、审批、结束骨架。</span></div>
+  <div><b>拖入节点</b><span>从左侧节点库拖到画布，系统按鼠标位置创建节点。</span></div>
+  <div><b>拖动端口连线</b><span>从一个节点的小圆点拖到另一个节点的小圆点，生成流转箭头。</span></div>
+  <div><b>编辑属性</b><span>点击节点或连线，右侧面板修改名称、审批人、条件、起点和终点。</span></div>
+  <div><b>导出 JSON</b><span>把画布上的节点和边变成结构化数据，留给后端保存和执行。</span></div>
+</div>
+
+大白话说：X6 画布负责让人“画得出来”，右侧属性面板负责让规则“说得清楚”，导出 JSON 负责让后端“读得懂”。
+
 ## 节点属性
 
 点击画布中的任意节点，右侧会显示节点属性。常见配置包括：
@@ -105,6 +209,37 @@ mode=new
 - 结束：流程终点。
 
 修改节点名称后，画布中的节点文字会同步更新。这让属性面板不只是表单，而是和画布形成了实时联动。
+
+这些节点可以按职责理解：
+
+<div class="lc-protocol-grid">
+  <div>
+    <strong>开始</strong>
+    <span>申请提交后的流程入口，通常只有一条出边。</span>
+  </div>
+  <div>
+    <strong>审批人</strong>
+    <span>指定某个人或某个角色来处理这一步。</span>
+  </div>
+  <div>
+    <strong>会签</strong>
+    <span>多个人一起审批，适合多人共同确认的场景。</span>
+  </div>
+  <div>
+    <strong>条件判断</strong>
+    <span>按金额、部门、类型等条件决定走哪条分支。</span>
+  </div>
+  <div>
+    <strong>抄送通知</strong>
+    <span>流程不一定停在这里，但会通知相关人。</span>
+  </div>
+  <div>
+    <strong>结束</strong>
+    <span>流程终点，申请通过、驳回或完成都会落到这里。</span>
+  </div>
+</div>
+
+节点本身表示“这一步做什么”，节点属性表示“这一步由谁做、按什么条件做、要通知谁”。
 
 ## 连线属性为什么重要
 
@@ -132,6 +267,27 @@ mode=new
 
 可以选中连线，在右侧把“终点节点”改成“审批人”，再选择终点端口。对复杂审批流来说，这种属性化编辑比纯拖拽更可控。
 
+连线不是视觉装饰，它就是审批流转方向：
+
+<div class="lc-flow">
+  <div class="lc-flow__node">
+    <strong>节点</strong>
+    <span>表示审批步骤，例如部门经理审批。</span>
+  </div>
+  <div class="lc-flow__arrow">→</div>
+  <div class="lc-flow__node">
+    <strong>连线</strong>
+    <span>表示下一步去哪里，例如通过后去财务审批。</span>
+  </div>
+  <div class="lc-flow__arrow">→</div>
+  <div class="lc-flow__node">
+    <strong>连线属性</strong>
+    <span>说明从哪个节点、哪个端口，连到哪个节点、哪个端口。</span>
+  </div>
+</div>
+
+为什么要做连线属性面板？因为复杂流程里，靠鼠标拖动端点很容易接错。下拉框改起点和终点虽然看起来笨一点，但更稳定，也更适合做流程维护。
+
 ## 导出 JSON
 
 点击“导出 JSON”后，系统会读取当前画布中的节点和连线，并导出结构化数据。
@@ -145,6 +301,41 @@ mode=new
 
 这个边界和工作流系统很像：画布是编辑态，JSON 是协议，后端运行时消费协议。
 
+导出的 JSON 可以理解成两张表：
+
+<div class="lc-split-diagram">
+  <div>
+    <strong>nodes</strong>
+    <p>记录有哪些审批步骤：节点 ID、节点类型、名称、审批人、条件表达式、备注、坐标。</p>
+  </div>
+  <div>
+    <strong>edges</strong>
+    <p>记录步骤之间怎么走：边 ID、起点、终点、连线文字和端口信息。</p>
+  </div>
+  <div>
+    <strong>后端运行时</strong>
+    <p>未来可以读取 nodes 和 edges，按规则创建审批任务并推动流程流转。</p>
+  </div>
+</div>
+
+举个最简单的例子：
+
+```json
+{
+  "nodes": [
+    { "id": "start_1", "type": "start", "label": "开始" },
+    { "id": "approve_1", "type": "approver", "label": "部门经理审批", "assignee": "部门经理" },
+    { "id": "end_1", "type": "end", "label": "结束" }
+  ],
+  "edges": [
+    { "source": "start_1", "target": "approve_1", "label": "提交" },
+    { "source": "approve_1", "target": "end_1", "label": "通过" }
+  ]
+}
+```
+
+这段数据的意思很直白：申请提交后先到部门经理，部门经理通过后流程结束。前端画的是图，后端真正需要保存的是这份结构化规则。
+
 ## 本地演示边界
 
 这个项目明确是前端演示项目。所有列表数据都是静态模拟数据，新建流程只保存在当前浏览器本地。
@@ -157,6 +348,29 @@ mode=new
 刷新页面后，流程管理会重新读取这些本地流程草稿；如果清空浏览器本地存储，新建流程草稿也会消失。
 
 这种设计适合产品演示和交互验证。它先把流程管理、流程编排、待办处理和发起申请这些前端体验跑顺，不急着把后端模型一次性做重。
+
+本地演示和真实系统的边界可以这样看：
+
+<div class="lc-map">
+  <div>
+    <strong>当前演示已有</strong>
+    <span>页面结构、静态数据、流程编排交互、节点/连线属性、JSON 导出、本地草稿。</span>
+  </div>
+  <div>
+    <strong>当前演示没有</strong>
+    <span>真实登录鉴权、后端接口、数据库、审批实例运行时、消息通知和权限控制。</span>
+  </div>
+  <div>
+    <strong>为什么这样做</strong>
+    <span>先验证产品路径和设计器交互，避免一开始就被后端流程引擎拖慢。</span>
+  </div>
+  <div>
+    <strong>以后怎么接</strong>
+    <span>把导出 JSON 存成流程模板，申请单创建审批实例，审批任务按 edges 流转。</span>
+  </div>
+</div>
+
+这不是缺点，反而是这个项目目标清楚的地方：它先把“审批系统长什么样、流程怎么画”讲明白。
 
 ## 常用操作
 

@@ -1,9 +1,16 @@
 ---
 title: 文章
 description: 文章归档
-date: 2026-01-20
+date: 2026-02-18
 ---
 <div class="archive-list">
+  <div class="archive-item">
+    <time>2026-02-18</time>
+    <div>
+      <a href="posts/offline-package-hybrid-app">App 前端离线包：让 Hybrid H5 从 CDN 请求变成本地命中</a>
+      <p class="post-meta">离线包 · Hybrid App · WebView · 灰度回滚</p>
+    </div>
+  </div>
   <div class="archive-item">
     <time>2026-01-20</time>
     <div>
