@@ -12,6 +12,13 @@ date: 2026-02-18
     </div>
   </div>
   <div class="archive-item">
+    <time>2026-03-05</time>
+    <div>
+      <a href="posts/multi-branch-auto-deploy-test-env">多分支自动部署转测：用泛域名给每个分支生成独立测试环境</a>
+      <p class="post-meta">GitLab CI · Nginx · 泛域名 · 转测</p>
+    </div>
+  </div>
+  <div class="archive-item">
     <time>2026-02-18</time>
     <div>
       <a href="posts/offline-package-hybrid-app">App 前端离线包：让 Hybrid H5 从 CDN 请求变成本地命中</a>
