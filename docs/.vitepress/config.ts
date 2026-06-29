@@ -28,6 +28,7 @@ export default defineConfig({
         {
           text: '文章',
           items: [
+            { text: 'Simple LLM + MCP + RAG：不用框架搭一个增强型指定知识库 Agent', link: '/posts/simple-llm-mcp-rag-agent' },
             { text: 'App 前端离线包：让 Hybrid H5 从 CDN 请求变成本地命中', link: '/posts/offline-package-hybrid-app' },
             { text: 'AI Component Platform：把 AI 能力做成可灰度、可观测、可部署的组件', link: '/posts/ai-component-platform' },
             { text: '前端监控告警平台：从 SDK 到 SourceMap 和告警闭环', link: '/posts/frontend-monitoring-platform' },

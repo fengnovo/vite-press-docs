@@ -5,6 +5,13 @@ date: 2026-02-18
 ---
 <div class="archive-list">
   <div class="archive-item">
+    <time>2026-03-18</time>
+    <div>
+      <a href="posts/simple-llm-mcp-rag-agent">Simple LLM + MCP + RAG：不用框架搭一个增强型指定知识库 Agent</a>
+      <p class="post-meta">LLM · MCP · RAG · Agent</p>
+    </div>
+  </div>
+  <div class="archive-item">
     <time>2026-02-18</time>
     <div>
       <a href="posts/offline-package-hybrid-app">App 前端离线包：让 Hybrid H5 从 CDN 请求变成本地命中</a>
