@@ -28,6 +28,7 @@ export default defineConfig({
         {
           text: '文章',
           items: [
+            { text: 'KUI 自研 React 组件库：从 Monorepo 到 Headless 组件和发布流水线', link: '/posts/react-kui-component-library' },
             { text: 'Simple LLM + MCP + RAG：不用框架搭一个增强型指定知识库 Agent', link: '/posts/simple-llm-mcp-rag-agent' },
             { text: '多分支自动部署转测：用泛域名给每个分支生成独立测试环境', link: '/posts/multi-branch-auto-deploy-test-env' },
             { text: 'App 前端离线包：让 Hybrid H5 从 CDN 请求变成本地命中', link: '/posts/offline-package-hybrid-app' },
