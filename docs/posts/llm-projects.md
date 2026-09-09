@@ -1,3 +1,7 @@
+---
+date: 2026-06-20
+---
+
 # LLM 应用实战项目合集
 
 > 项目源码：[fengnovo/llm-projects](https://github.com/fengnovo/llm-projects)

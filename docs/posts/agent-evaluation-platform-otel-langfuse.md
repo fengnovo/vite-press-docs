@@ -1,7 +1,7 @@
 ---
 title: Agent Evaluation Platform：从多次 Trial、分层评分到 OpenTelemetry + Langfuse
 description: 用 TypeScript、LangGraph、PostgreSQL、OpenTelemetry 和 Langfuse 搭建一套可重复、可解释、可回归的 Coding Agent 评测平台
-date: 2026-09-09
+date: 2026-07-05
 ---
 
 # Agent Evaluation Platform：从多次 Trial、分层评分到 OpenTelemetry + Langfuse

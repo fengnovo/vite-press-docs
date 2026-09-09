@@ -1,7 +1,7 @@
 ---
 title: RPC 服务和高性能 BFF 层
 description: 基于 Node.js、sofa-rpc-node、gRPC、Zookeeper、Redis 与 RabbitMQ 的 BFF 微服务示例与原理说明。
-date: 2026-09-09
+date: 2026-05-02
 ---
 
 # rpc服务和高性能bff层

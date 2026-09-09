@@ -1,7 +1,7 @@
 ---
 title: Node.js 高可用实战：无状态、读写分离、缓存与熔断降级
 description: 用一个可运行的 Node.js Demo，串起 Redis Session、MySQL 读写分离、布隆过滤器、随机 TTL、缓存预热与熔断降级。
-date: 2026-09-09
+date: 2026-04-26
 ---
 
 # Node.js 高可用实战：无状态、读写分离、缓存与熔断降级
