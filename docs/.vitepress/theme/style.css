@@ -338,6 +338,56 @@
   margin: 24px 0;
 }
 
+.mermaid-diagram {
+  position: relative;
+  min-height: 88px;
+  margin: 24px 0;
+}
+
+.mermaid-diagram__canvas {
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  padding: 16px 0;
+}
+
+.mermaid-diagram__canvas svg {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+.mermaid-diagram__loading {
+  display: grid;
+  min-height: 88px;
+  place-items: center;
+  color: var(--vp-c-text-3);
+  font-size: 14px;
+}
+
+.mermaid-diagram__error {
+  color: var(--vp-c-danger-1);
+}
+
+.mermaid-diagram__error pre {
+  max-height: 360px;
+  overflow: auto;
+}
+
+.vp-doc img:not(.no-zoom) {
+  cursor: zoom-in;
+}
+
+.medium-zoom-overlay {
+  z-index: 1000;
+  backdrop-filter: blur(3px);
+}
+
+.medium-zoom-image--opened {
+  z-index: 1001;
+  cursor: zoom-out;
+}
+
 .lc-flow {
   display: flex;
   align-items: stretch;

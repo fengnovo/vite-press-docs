@@ -9,6 +9,22 @@ export default defineConfig({
   base,
   cleanUrls: true,
   appearance: true,
+  markdown: {
+    config(md) {
+      const renderFence = md.renderer.rules.fence!
+
+      md.renderer.rules.fence = (tokens, index, options, env, self) => {
+        const token = tokens[index]
+        const language = token.info.trim().split(/\s+/, 1)[0]
+
+        if (language === 'mermaid') {
+          return `<MermaidDiagram graph="${encodeURIComponent(token.content)}" />`
+        }
+
+        return renderFence(tokens, index, options, env, self)
+      }
+    }
+  },
   head: [
     ['link', { rel: 'icon', type: 'image/png', href: `${base}images/9670320.png` }],
     ['link', { rel: 'apple-touch-icon', href: `${base}images/9670320.png` }],

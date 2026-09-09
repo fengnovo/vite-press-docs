@@ -11,6 +11,8 @@
   },
   "devDependencies": {
     "@types/node": "^26.0.1",
+    "medium-zoom": "^1.1.0",
+    "mermaid": "^11.17.2",
     "vitepress": "^1.6.4"
   }
 }
