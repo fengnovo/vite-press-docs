@@ -5,6 +5,13 @@ date: 2026-02-18
 ---
 <div class="archive-list">
   <div class="archive-item">
+    <time>2026-09-09</time>
+    <div>
+      <a href="posts/ai-agent-langgraph-demo/">LangGraph Agent 实战：从持久化、Middleware、DeepAgents 到 GraphRAG</a>
+      <p class="post-meta">LangGraph · LangChain.js · DeepAgents · LlamaIndex · GraphRAG</p>
+    </div>
+  </div>
+  <div class="archive-item">
     <time>2026-07-05</time>
     <div>
       <a href="posts/agent-evaluation-platform-otel-langfuse">Agent Evaluation Platform：从多次 Trial、分层评分到 OpenTelemetry + Langfuse</a>

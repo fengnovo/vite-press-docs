@@ -41,10 +41,36 @@ export default defineConfig({
       { text: '项目', link: '/projects' }
     ],
     sidebar: {
+      '/posts/ai-agent-langgraph-demo/': [
+        {
+          text: 'LangGraph Agent 实战',
+          items: [
+            { text: '系列总览', link: '/posts/ai-agent-langgraph-demo/' },
+            { text: 'Demo 3：Checkpoint 持久化', link: '/posts/ai-agent-langgraph-demo/demo3' },
+            { text: 'Demo 4：LangGraph 流式输出', link: '/posts/ai-agent-langgraph-demo/demo4-streaming' },
+            { text: 'Demo 5：LangChain.js 基础', link: '/posts/ai-agent-langgraph-demo/demo5-langchain-base' },
+            { text: 'Demo 6：接入 Langfuse', link: '/posts/ai-agent-langgraph-demo/demo6-langfuse' },
+            { text: 'Demo 7：LlamaIndex 知识库', link: '/posts/ai-agent-langgraph-demo/demo7-llamaindex' },
+            { text: 'Demo 8：动态模型', link: '/posts/ai-agent-langgraph-demo/demo8-dynamic-model' },
+            { text: 'Demo 9：动态系统提示词', link: '/posts/ai-agent-langgraph-demo/demo9-dynamic-system-prompt' },
+            { text: 'Demo 10：结构化输出', link: '/posts/ai-agent-langgraph-demo/demo10-structured-output' },
+            { text: 'Demo 11：消息类型', link: '/posts/ai-agent-langgraph-demo/demo11-message-types' },
+            { text: 'Demo 12：Middleware', link: '/posts/ai-agent-langgraph-demo/demo12-middleware' },
+            { text: 'Demo 13：DeepAgents', link: '/posts/ai-agent-langgraph-demo/demo13-deepagents' },
+            { text: 'Demo 14：SubAgent', link: '/posts/ai-agent-langgraph-demo/demo14-subagents' },
+            { text: 'Demo 15：上下文工程', link: '/posts/ai-agent-langgraph-demo/demo15-context-engineering' },
+            { text: 'Demo 16：Memory', link: '/posts/ai-agent-langgraph-demo/demo16-memory' },
+            { text: 'Demo 17：Sandbox', link: '/posts/ai-agent-langgraph-demo/demo17-sandbox' },
+            { text: 'Demo 18：危险命令防护', link: '/posts/ai-agent-langgraph-demo/demo18-dangerous-command' },
+            { text: 'Demo 19：LlamaIndex GraphRAG', link: '/posts/ai-agent-langgraph-demo/demo19-graphrag' }
+          ]
+        }
+      ],
       '/posts/': [
         {
           text: '文章',
           items: [
+            { text: 'LangGraph Agent 实战：从持久化、Middleware、DeepAgents 到 GraphRAG', link: '/posts/ai-agent-langgraph-demo/' },
             { text: 'Agent Evaluation Platform：从多次 Trial、分层评分到 OpenTelemetry + Langfuse', link: '/posts/agent-evaluation-platform-otel-langfuse' },
             { text: 'LLM 应用实战项目合集', link: '/posts/llm-projects' },
             { text: 'RPC 服务和高性能 BFF 层', link: '/posts/rpc-bff' },
