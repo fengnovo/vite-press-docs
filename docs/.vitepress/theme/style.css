@@ -15,6 +15,10 @@
 }
 
 .dark {
+  --vp-c-brand-1: #77c9be;
+  --vp-c-brand-2: #91d9d0;
+  --vp-c-brand-3: #b9e8e2;
+  --vp-c-brand-soft: rgba(119, 201, 190, 0.18);
   --vp-c-bg: #101818;
   --vp-c-bg-alt: #172120;
   --vp-c-bg-soft: #1c2928;
@@ -408,9 +412,9 @@
   z-index: 2000;
   inset: 0;
   overflow: hidden;
-  background: rgba(8, 13, 13, 0.94);
+  background: color-mix(in srgb, var(--vp-c-bg) 94%, transparent);
   backdrop-filter: blur(5px);
-  color: #f5fbf9;
+  color: var(--vp-c-text-1);
 }
 
 .mermaid-zoom__toolbar {
@@ -421,11 +425,12 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
   padding: 6px;
-  background: rgba(22, 32, 31, 0.9);
+  background: color-mix(in srgb, var(--vp-c-bg-soft) 92%, transparent);
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(8px);
 }
 
 .mermaid-zoom__toolbar button {
@@ -445,17 +450,17 @@
 
 .mermaid-zoom__toolbar button:hover,
 .mermaid-zoom__toolbar button:focus-visible {
-  background: rgba(255, 255, 255, 0.12);
+  background: var(--vp-c-brand-soft);
 }
 
 .mermaid-zoom__toolbar button:focus-visible {
-  outline: 2px solid #8cddd2;
+  outline: 2px solid var(--vp-c-brand-2);
   outline-offset: 1px;
 }
 
 .mermaid-zoom__toolbar output {
   min-width: 56px;
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--vp-c-text-2);
   font-size: 13px;
   font-variant-numeric: tabular-nums;
   text-align: center;
@@ -499,7 +504,7 @@
   bottom: 16px;
   left: 0;
   margin: 0;
-  color: rgba(255, 255, 255, 0.58);
+  color: var(--vp-c-text-3);
   font-size: 12px;
   letter-spacing: 0.02em;
   text-align: center;

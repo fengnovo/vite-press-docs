@@ -1,3 +1,13 @@
+<script lang="ts">
+let mermaidRenderQueue = Promise.resolve()
+
+function enqueueMermaidRender<T>(task: () => Promise<T>) {
+  const result = mermaidRenderQueue.then(task, task)
+  mermaidRenderQueue = result.then(() => undefined, () => undefined)
+  return result
+}
+</script>
+
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useData } from 'vitepress'
@@ -160,27 +170,30 @@ async function renderDiagram() {
   if (!target) return
 
   const currentVersion = ++renderVersion
+  const theme = isDark.value ? 'dark' : 'neutral'
   errorMessage.value = ''
+  isRendered.value = false
 
   try {
     const { default: mermaid } = await import('mermaid')
-
-    mermaid.initialize({
-      startOnLoad: false,
-      securityLevel: 'strict',
-      theme: isDark.value ? 'dark' : 'neutral',
-      flowchart: {
-        useMaxWidth: true,
-        htmlLabels: true
-      },
-      sequence: {
-        useMaxWidth: true,
-        wrap: true
-      }
-    })
-
     const id = `mermaid-${Date.now()}-${currentVersion}-${Math.random().toString(36).slice(2)}`
-    const { svg, bindFunctions } = await mermaid.render(id, source.value)
+    const { svg, bindFunctions } = await enqueueMermaidRender(async () => {
+      mermaid.initialize({
+        startOnLoad: false,
+        securityLevel: 'strict',
+        theme,
+        flowchart: {
+          useMaxWidth: true,
+          htmlLabels: true
+        },
+        sequence: {
+          useMaxWidth: true,
+          wrap: true
+        }
+      })
+
+      return mermaid.render(id, source.value)
+    })
 
     if (isUnmounted || currentVersion !== renderVersion) return
 
