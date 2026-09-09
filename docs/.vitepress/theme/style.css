@@ -74,6 +74,16 @@
   border-bottom: 0;
 }
 
+.VPSidebar .VPSidebarItem.is-link > .item {
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--vp-c-divider);
+  padding-bottom: 8px;
+}
+
+.VPSidebar .VPSidebarItem.is-link.is-active > .item {
+  border-bottom-color: var(--vp-c-brand-1);
+}
+
 .post-card,
 .post-card *,
 .post-card:hover,
