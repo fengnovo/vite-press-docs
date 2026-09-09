@@ -5,6 +5,13 @@ date: 2026-02-18
 ---
 <div class="archive-list">
   <div class="archive-item">
+    <time>2026-09-09</time>
+    <div>
+      <a href="posts/nodejs-high-availability">Node.js 高可用实战：无状态、读写分离、缓存与熔断降级</a>
+      <p class="post-meta">Node.js · 高可用 · Redis · MySQL · 熔断降级</p>
+    </div>
+  </div>
+  <div class="archive-item">
     <time>2026-06-30</time>
     <div>
       <a href="posts/react-kui-component-library">KUI 自研 React 组件库：从 Monorepo 到 Headless 组件和发布流水线</a>
