@@ -45,6 +45,7 @@ export default defineConfig({
         {
           text: '文章',
           items: [
+            { text: 'Agent Evaluation Platform：从多次 Trial、分层评分到 OpenTelemetry + Langfuse', link: '/posts/agent-evaluation-platform-otel-langfuse' },
             { text: 'LLM 应用实战项目合集', link: '/posts/llm-projects' },
             { text: 'RPC 服务和高性能 BFF 层', link: '/posts/rpc-bff' },
             { text: 'Node.js 高可用实战：无状态、读写分离、缓存与熔断降级', link: '/posts/nodejs-high-availability' },

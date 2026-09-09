@@ -7,6 +7,13 @@ date: 2026-02-18
   <div class="archive-item">
     <time>2026-09-09</time>
     <div>
+      <a href="posts/agent-evaluation-platform-otel-langfuse">Agent Evaluation Platform：从多次 Trial、分层评分到 OpenTelemetry + Langfuse</a>
+      <p class="post-meta">Agent Eval · LangGraph · OpenTelemetry · Langfuse</p>
+    </div>
+  </div>
+  <div class="archive-item">
+    <time>2026-09-09</time>
+    <div>
       <a href="posts/llm-projects">LLM 应用实战项目合集</a>
       <p class="post-meta">LLM · 项目合集 · 学习路线</p>
     </div>
