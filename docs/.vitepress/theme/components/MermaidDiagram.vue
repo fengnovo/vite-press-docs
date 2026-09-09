@@ -17,7 +17,7 @@ const isDragging = ref(false)
 const zoomScale = ref(1)
 const panX = ref(0)
 const panY = ref(0)
-const zoomUrl = ref('')
+const zoomSvg = ref('')
 const source = computed(() => decodeURIComponent(props.graph))
 const zoomPercent = computed(() => Math.round(zoomScale.value * 100))
 const zoomTransform = computed(() => ({
@@ -31,6 +31,7 @@ let previousBodyOverflow = ''
 let dragPointerId: number | null = null
 let dragStartX = 0
 let dragStartY = 0
+const zoomNamespace = `zoom-${Math.random().toString(36).slice(2)}`
 
 const minScale = 0.5
 const maxScale = 6
@@ -39,9 +40,15 @@ function clampScale(value: number) {
   return Math.min(maxScale, Math.max(minScale, value))
 }
 
-function replaceZoomUrl(svg: string) {
-  if (zoomUrl.value) URL.revokeObjectURL(zoomUrl.value)
-  zoomUrl.value = URL.createObjectURL(new Blob([svg], { type: 'image/svg+xml' }))
+function replaceZoomSvg(svg: string) {
+  const ids = [...svg.matchAll(/\bid="([^"]+)"/g)]
+    .map((match) => match[1])
+    .sort((first, second) => second.length - first.length)
+
+  zoomSvg.value = ids.reduce(
+    (result, id) => result.replaceAll(id, `${id}-${zoomNamespace}`),
+    svg
+  )
 }
 
 function resetZoom() {
@@ -51,7 +58,7 @@ function resetZoom() {
 }
 
 function openZoom() {
-  if (!isRendered.value || !zoomUrl.value) return
+  if (!isRendered.value || !zoomSvg.value) return
 
   previousActiveElement = document.activeElement instanceof HTMLElement
     ? document.activeElement
@@ -179,7 +186,7 @@ async function renderDiagram() {
 
     target.innerHTML = svg
     bindFunctions?.(target)
-    replaceZoomUrl(svg)
+    replaceZoomSvg(svg)
     isRendered.value = true
   } catch (error) {
     if (isUnmounted || currentVersion !== renderVersion) return
@@ -203,7 +210,6 @@ onBeforeUnmount(() => {
   renderVersion += 1
   document.removeEventListener('keydown', handleDocumentKeydown)
   closeZoom(false)
-  if (zoomUrl.value) URL.revokeObjectURL(zoomUrl.value)
 })
 </script>
 
@@ -266,13 +272,13 @@ onBeforeUnmount(() => {
         @pointerup="stopDrag"
         @pointercancel="stopDrag"
       >
-        <img
-          class="mermaid-zoom__image"
-          :src="zoomUrl"
-          alt="放大后的 Mermaid 流程图"
-          draggable="false"
+        <div
+          class="mermaid-zoom__diagram"
+          role="img"
+          aria-label="放大后的 Mermaid 流程图"
           :style="zoomTransform"
-        >
+          v-html="zoomSvg"
+        />
       </div>
       <p class="mermaid-zoom__help">滚轮缩放 · 拖拽移动 · Esc 关闭</p>
     </div>

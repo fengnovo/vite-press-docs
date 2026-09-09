@@ -474,17 +474,23 @@
   cursor: grabbing;
 }
 
-.mermaid-zoom__image {
+.mermaid-zoom__diagram {
   position: absolute;
   top: 50%;
   left: 50%;
   display: block;
   width: min(88vw, 1440px);
   height: calc(100vh - 150px);
-  object-fit: contain;
   transform-origin: center;
   pointer-events: none;
   will-change: transform;
+}
+
+.mermaid-zoom__diagram svg {
+  display: block;
+  width: 100% !important;
+  max-width: none !important;
+  height: 100% !important;
 }
 
 .mermaid-zoom__help {
