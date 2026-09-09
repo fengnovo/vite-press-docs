@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#334155"/>
+    </marker>
+    <style>
+      .bg{fill:#f8fafc}.title{font:700 26px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#0f172a}
+      .box{fill:#fff;stroke:#334155;stroke-width:2}.bff{fill:#ecfeff;stroke:#0891b2}.svc{fill:#fdf2f8;stroke:#db2777}
+      .infra{fill:#fffbeb;stroke:#d97706}.mq{fill:#f0fdf4;stroke:#16a34a}.cache{fill:#eef2ff;stroke:#4f46e5}
+      .label{font:700 16px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#0f172a}.small{font:13px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#334155}
+      .line{stroke:#334155;stroke-width:2.2;fill:none;marker-end:url(#arrow)}.dash{stroke-dasharray:7 6}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="760"/>
+  <text class="title" x="40" y="48">这个项目里的角色地图</text>
+  <rect class="box" x="55" y="110" width="180" height="80" rx="8"/>
+  <text class="label" text-anchor="middle" x="145" y="143">前端 / curl</text>
+  <text class="small" text-anchor="middle" x="145" y="168">只访问 HTTP 接口</text>
+  <rect class="bff" x="330" y="88" width="250" height="124" rx="8"/>
+  <text class="label" text-anchor="middle" x="455" y="126">BFF</text>
+  <text class="small" text-anchor="middle" x="455" y="153">Koa :3000</text>
+  <text class="small" text-anchor="middle" x="455" y="175">聚合数据 / 写缓存 / 发日志</text>
+  <path class="line" d="M235 150 H320"/>
+  <text class="small" x="250" y="136">HTTP</text>
+  <rect class="cache" x="675" y="72" width="165" height="66" rx="8"/>
+  <text class="label" text-anchor="middle" x="757" y="100">LRU</text>
+  <text class="small" text-anchor="middle" x="757" y="122">本地缓存</text>
+  <rect class="cache" x="920" y="72" width="165" height="66" rx="8"/>
+  <text class="label" text-anchor="middle" x="1002" y="100">Redis</text>
+  <text class="small" text-anchor="middle" x="1002" y="122">共享缓存</text>
+  <path class="line" d="M580 128 C620 108,640 104,665 105"/>
+  <path class="line" d="M840 105 H910"/>
+  <rect class="infra" x="690" y="210" width="210" height="80" rx="8"/>
+  <text class="label" text-anchor="middle" x="795" y="242">Zookeeper</text>
+  <text class="small" text-anchor="middle" x="795" y="267">RPC 服务通讯录</text>
+  <path class="line dash" d="M580 175 C640 205,645 245,680 250"/>
+  <rect class="svc" x="660" y="380" width="215" height="92" rx="8"/>
+  <text class="label" text-anchor="middle" x="767" y="413">user 服务</text>
+  <text class="small" text-anchor="middle" x="767" y="438">com.keen.user</text>
+  <text class="small" text-anchor="middle" x="767" y="456">查 user 表</text>
+  <rect class="svc" x="660" y="540" width="215" height="92" rx="8"/>
+  <text class="label" text-anchor="middle" x="767" y="573">post 服务</text>
+  <text class="small" text-anchor="middle" x="767" y="598">com.keen.post</text>
+  <text class="small" text-anchor="middle" x="767" y="616">查 post 表</text>
+  <rect class="infra" x="975" y="455" width="155" height="86" rx="8"/>
+  <text class="label" text-anchor="middle" x="1052" y="490">MySQL</text>
+  <text class="small" text-anchor="middle" x="1052" y="515">业务数据</text>
+  <path class="line" d="M580 194 C630 275,625 405,650 425"/>
+  <path class="line" d="M580 202 C620 330,620 565,650 586"/>
+  <path class="line" d="M875 426 C920 438,930 465,965 487"/>
+  <path class="line" d="M875 586 C925 565,938 525,965 510"/>
+  <rect class="mq" x="335" y="355" width="230" height="78" rx="8"/>
+  <text class="label" text-anchor="middle" x="450" y="386">RabbitMQ</text>
+  <text class="small" text-anchor="middle" x="450" y="410">logger 队列</text>
+  <path class="line" d="M455 212 V345"/>
+  <rect class="mq" x="85" y="498" width="190" height="78" rx="8"/>
+  <text class="label" text-anchor="middle" x="180" y="529">write-logger</text>
+  <text class="small" text-anchor="middle" x="180" y="553">消费日志</text>
+  <path class="line" d="M335 420 C280 448,245 485,226 493"/>
+  <rect class="infra" x="95" y="635" width="170" height="58" rx="8"/>
+  <text class="label" text-anchor="middle" x="180" y="670">logger.txt</text>
+  <path class="line" d="M180 576 V625"/>
+</svg>
+

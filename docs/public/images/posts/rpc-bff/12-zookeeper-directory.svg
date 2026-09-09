@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="680" viewBox="0 0 1120 680">
+  <defs>
+    <style>
+      .bg{fill:#f8fafc}.title{font:700 25px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#0f172a}
+      .panel{fill:#fff;stroke:#334155;stroke-width:2}.node{fill:#fffbeb;stroke:#d97706;stroke-width:2}.leaf{fill:#f0fdf4;stroke:#16a34a;stroke-width:2}.watch{fill:#ecfeff;stroke:#0891b2;stroke-width:2}
+      .label{font:700 15px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#0f172a}.small{font:13px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#334155}.code{font:13px Menlo,Consolas,monospace;fill:#334155}
+      .line{stroke:#334155;stroke-width:2;fill:none}
+    </style>
+  </defs>
+  <rect class="bg" width="1120" height="680"/>
+  <text class="title" x="40" y="48">Zookeeper：像一棵会自动更新的目录树</text>
+  <rect class="panel" x="65" y="100" width="560" height="510" rx="10"/>
+  <text class="label" x="95" y="140">服务目录示意</text>
+  <rect class="node" x="250" y="170" width="190" height="48" rx="8"/>
+  <text class="code" text-anchor="middle" x="345" y="200">/sofa-rpc</text>
+  <rect class="node" x="145" y="285" width="210" height="56" rx="8"/>
+  <text class="code" text-anchor="middle" x="250" y="318">/com.keen.user</text>
+  <rect class="node" x="385" y="285" width="210" height="56" rx="8"/>
+  <text class="code" text-anchor="middle" x="490" y="318">/com.keen.post</text>
+  <rect class="leaf" x="100" y="430" width="260" height="62" rx="8"/>
+  <text class="code" text-anchor="middle" x="230" y="458">provider-172.x:10000</text>
+  <text class="small" text-anchor="middle" x="230" y="478">user 服务活着才存在</text>
+  <rect class="leaf" x="370" y="430" width="260" height="62" rx="8"/>
+  <text class="code" text-anchor="middle" x="500" y="458">provider-172.x:20000</text>
+  <text class="small" text-anchor="middle" x="500" y="478">post 服务活着才存在</text>
+  <path class="line" d="M345 218 V250 H250 V285"/>
+  <path class="line" d="M345 250 H490 V285"/>
+  <path class="line" d="M250 341 V430"/>
+  <path class="line" d="M490 341 V430"/>
+  <rect class="watch" x="710" y="150" width="330" height="110" rx="8"/>
+  <text class="label" text-anchor="middle" x="875" y="184">临时节点</text>
+  <text class="small" text-anchor="middle" x="875" y="212">服务连接断开，节点自动消失</text>
+  <text class="small" text-anchor="middle" x="875" y="236">消费者就知道服务下线了</text>
+  <rect class="watch" x="710" y="340" width="330" height="110" rx="8"/>
+  <text class="label" text-anchor="middle" x="875" y="374">监听变化</text>
+  <text class="small" text-anchor="middle" x="875" y="402">服务新增 / 下线时</text>
+  <text class="small" text-anchor="middle" x="875" y="426">客户端可以收到更新</text>
+  <rect class="watch" x="710" y="520" width="330" height="78" rx="8"/>
+  <text class="label" text-anchor="middle" x="875" y="552">本项目只用它做一件事</text>
+  <text class="small" text-anchor="middle" x="875" y="576">RPC 服务注册与发现</text>
+</svg>
+

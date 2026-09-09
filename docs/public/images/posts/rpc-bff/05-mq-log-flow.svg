@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="620" viewBox="0 0 1100 620">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#334155"/>
+    </marker>
+    <style>
+      .bg{fill:#f8fafc}.title{font:700 26px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#0f172a}
+      .box{fill:#fff;stroke:#334155;stroke-width:2}.bff{fill:#ecfeff;stroke:#0891b2}.queue{fill:#f0fdf4;stroke:#16a34a}
+      .file{fill:#fffbeb;stroke:#d97706}.warn{fill:#fff7ed;stroke:#ea580c}.label{font:700 15px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#0f172a}
+      .small{font:13px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#334155}.line{stroke:#334155;stroke-width:2.2;fill:none;marker-end:url(#arrow)}
+      .dash{stroke-dasharray:7 6}.step{font:700 13px Arial,sans-serif;fill:#0891b2}
+    </style>
+  </defs>
+  <rect class="bg" x="0" y="0" width="1100" height="620"/>
+  <text class="title" x="40" y="46">RabbitMQ 访问日志异步写入流程</text>
+
+  <rect class="bff" x="60" y="120" width="210" height="82" rx="8"/>
+  <text class="label" text-anchor="middle" x="165" y="150">Koa BFF 路由</text>
+  <text class="small" text-anchor="middle" x="165" y="174">method / path / userId</text>
+  <text class="small" text-anchor="middle" x="165" y="192">构造成 JSON</text>
+
+  <rect class="bff" x="350" y="120" width="210" height="82" rx="8"/>
+  <text class="label" text-anchor="middle" x="455" y="150">MQ Channel</text>
+  <text class="small" text-anchor="middle" x="455" y="174">assertQueue('logger')</text>
+  <text class="small" text-anchor="middle" x="455" y="192">sendToQueue</text>
+
+  <rect class="queue" x="640" y="120" width="210" height="82" rx="8"/>
+  <text class="label" text-anchor="middle" x="745" y="150">RabbitMQ</text>
+  <text class="small" text-anchor="middle" x="745" y="174">logger 队列</text>
+  <text class="small" text-anchor="middle" x="745" y="192">缓冲日志消息</text>
+
+  <rect class="queue" x="640" y="315" width="210" height="82" rx="8"/>
+  <text class="label" text-anchor="middle" x="745" y="345">write-logger</text>
+  <text class="small" text-anchor="middle" x="745" y="369">logger.consume</text>
+  <text class="small" text-anchor="middle" x="745" y="387">独立进程消费</text>
+
+  <rect class="file" x="350" y="315" width="210" height="82" rx="8"/>
+  <text class="label" text-anchor="middle" x="455" y="345">logger.txt</text>
+  <text class="small" text-anchor="middle" x="455" y="369">appendFile</text>
+  <text class="small" text-anchor="middle" x="455" y="387">一行一条 JSON</text>
+
+  <rect class="warn" x="145" y="455" width="810" height="88" rx="8"/>
+  <text class="label" text-anchor="middle" x="550" y="486">可靠性注意点</text>
+  <text class="small" text-anchor="middle" x="550" y="512">当前没有 durable queue、persistent message、manual ack，适合 demo，不适合可靠日志落盘。</text>
+
+  <path class="line" d="M270 161 H340"/>
+  <text class="step" x="292" y="148">1</text>
+  <path class="line" d="M560 161 H630"/>
+  <text class="step" x="585" y="148">2</text>
+  <path class="line" d="M745 202 V305"/>
+  <text class="step" x="758" y="255">3</text>
+  <path class="line" d="M640 356 H570"/>
+  <text class="step" x="596" y="343">4</text>
+  <path class="line dash" d="M270 194 C345 250,470 270,630 212"/>
+  <text class="small" x="350" y="270">BFF 不等待文件写入，可继续处理响应</text>
+</svg>
+

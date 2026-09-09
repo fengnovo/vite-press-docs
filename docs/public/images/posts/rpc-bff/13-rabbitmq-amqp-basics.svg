@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="650" viewBox="0 0 1200 650">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#334155"/></marker>
+    <style>
+      .bg{fill:#f8fafc}.title{font:700 25px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#0f172a}
+      .producer{fill:#ecfeff;stroke:#0891b2;stroke-width:2}.broker{fill:#fffbeb;stroke:#d97706;stroke-width:2}.queue{fill:#f0fdf4;stroke:#16a34a;stroke-width:2}.consumer{fill:#fdf2f8;stroke:#db2777;stroke-width:2}
+      .label{font:700 16px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#0f172a}.small{font:13px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#334155}.code{font:13px Menlo,Consolas,monospace;fill:#334155}
+      .line{stroke:#334155;stroke-width:2.2;fill:none;marker-end:url(#arrow)}.dash{stroke-dasharray:7 6}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="650"/>
+  <text class="title" x="40" y="48">RabbitMQ / AMQP 基础模型</text>
+  <rect class="producer" x="60" y="210" width="190" height="90" rx="8"/>
+  <text class="label" text-anchor="middle" x="155" y="244">Producer</text>
+  <text class="small" text-anchor="middle" x="155" y="270">生产消息的人</text>
+  <rect class="broker" x="360" y="130" width="480" height="250" rx="10"/>
+  <text class="label" text-anchor="middle" x="600" y="165">RabbitMQ Broker</text>
+  <rect class="broker" x="405" y="215" width="160" height="80" rx="8"/>
+  <text class="label" text-anchor="middle" x="485" y="247">Exchange</text>
+  <text class="small" text-anchor="middle" x="485" y="272">负责分发</text>
+  <rect class="queue" x="635" y="215" width="160" height="80" rx="8"/>
+  <text class="label" text-anchor="middle" x="715" y="247">Queue</text>
+  <text class="small" text-anchor="middle" x="715" y="272">真正存消息</text>
+  <path class="line" d="M250 255 H395"/>
+  <text class="code" x="270" y="238">publish</text>
+  <path class="line" d="M565 255 H625"/>
+  <text class="small" x="577" y="238">路由</text>
+  <rect class="consumer" x="955" y="210" width="190" height="90" rx="8"/>
+  <text class="label" text-anchor="middle" x="1050" y="244">Consumer</text>
+  <text class="small" text-anchor="middle" x="1050" y="270">消费消息的人</text>
+  <path class="line" d="M795 255 H945"/>
+  <text class="code" x="840" y="238">consume</text>
+  <path class="line dash" d="M955 305 C850 450,700 450,610 315"/>
+  <text class="code" x="760" y="455">ack</text>
+  <rect class="queue" x="260" y="470" width="680" height="82" rx="8"/>
+  <text class="label" text-anchor="middle" x="600" y="500">这个项目的简化用法</text>
+  <text class="code" text-anchor="middle" x="600" y="528">sendToQueue("logger", Buffer.from(...))</text>
+  <text class="small" text-anchor="middle" x="600" y="548">直接把消息投递到 logger 队列，底层使用默认 exchange</text>
+</svg>
+

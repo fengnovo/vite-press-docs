@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="620" viewBox="0 0 1120 620">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#334155"/>
+    </marker>
+    <style>
+      .bg{fill:#f8fafc}.title{font:700 26px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#0f172a}
+      .proto{fill:#f5f3ff;stroke:#7c3aed;stroke-width:2}.server{fill:#fdf2f8;stroke:#db2777;stroke-width:2}.client{fill:#ecfeff;stroke:#0891b2;stroke-width:2}
+      .label{font:700 15px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#0f172a}.small{font:13px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#334155}
+      .line{stroke:#334155;stroke-width:2.2;fill:none;marker-end:url(#arrow)}.dash{stroke-dasharray:7 6}.code{font:12px Menlo,Consolas,monospace;fill:#334155}
+    </style>
+  </defs>
+  <rect class="bg" x="0" y="0" width="1120" height="620"/>
+  <text class="title" x="40" y="46">grpcdemo：proto 契约驱动的 RPC 调用</text>
+
+  <rect class="proto" x="450" y="95" width="220" height="120" rx="8"/>
+  <text class="label" text-anchor="middle" x="560" y="126">hello.proto</text>
+  <text class="code" text-anchor="middle" x="560" y="154">package helloworld</text>
+  <text class="code" text-anchor="middle" x="560" y="176">service hello</text>
+  <text class="code" text-anchor="middle" x="560" y="198">rpc SayHello</text>
+
+  <rect class="server" x="110" y="310" width="250" height="126" rx="8"/>
+  <text class="label" text-anchor="middle" x="235" y="342">server.js</text>
+  <text class="small" text-anchor="middle" x="235" y="368">loadPackageDefinition</text>
+  <text class="small" text-anchor="middle" x="235" y="390">addService(SayHello)</text>
+  <text class="small" text-anchor="middle" x="235" y="412">bind 127.0.0.1:10086</text>
+
+  <rect class="client" x="760" y="310" width="250" height="126" rx="8"/>
+  <text class="label" text-anchor="middle" x="885" y="342">client.js</text>
+  <text class="small" text-anchor="middle" x="885" y="368">loadPackageDefinition</text>
+  <text class="small" text-anchor="middle" x="885" y="390">new hello client</text>
+  <text class="small" text-anchor="middle" x="885" y="412">client.SayHello</text>
+
+  <rect class="proto" x="435" y="485" width="250" height="70" rx="8"/>
+  <text class="label" text-anchor="middle" x="560" y="514">HelloResponse</text>
+  <text class="small" text-anchor="middle" x="560" y="538">message: 我叫keen,年龄28岁</text>
+
+  <path class="line" d="M485 215 C420 255,340 282,270 306"/>
+  <text class="small" x="315" y="270">服务端按 proto 暴露方法</text>
+  <path class="line" d="M635 215 C700 255,780 282,850 306"/>
+  <text class="small" x="700" y="270">客户端按 proto 生成调用形状</text>
+  <path class="line" d="M760 373 H370"/>
+  <text class="small" text-anchor="middle" x="560" y="356">Unary RPC: HelloRequest{name, age}</text>
+  <path class="line dash" d="M235 436 C310 500,385 520,425 520"/>
+  <path class="line dash" d="M685 520 C745 500,815 472,855 440"/>
+  <text class="small" text-anchor="middle" x="560" y="470">callback 返回 message</text>
+</svg>
+

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="840" viewBox="0 0 1120 840">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#334155"/>
+    </marker>
+    <style>
+      .bg{fill:#f8fafc}.title{font:700 26px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#0f172a}
+      .box{fill:#fff;stroke:#334155;stroke-width:2}.mw{fill:#ecfeff;stroke:#0891b2}.cache{fill:#eef2ff;stroke:#4f46e5}
+      .rpc{fill:#fdf2f8;stroke:#db2777}.mq{fill:#f0fdf4;stroke:#16a34a}.out{fill:#fffbeb;stroke:#d97706}
+      .label{font:700 15px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#0f172a}.small{font:13px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#334155}
+      .line{stroke:#334155;stroke-width:2.2;fill:none;marker-end:url(#arrow)}.yes{fill:#16a34a}.no{fill:#dc2626}.diamond{fill:#fff7ed;stroke:#ea580c;stroke-width:2}
+    </style>
+  </defs>
+  <rect class="bg" x="0" y="0" width="1120" height="840"/>
+  <text class="title" x="40" y="46">BFF 一次请求的聚合流程</text>
+
+  <rect class="box" x="70" y="82" width="200" height="64" rx="8"/>
+  <text class="label" text-anchor="middle" x="170" y="110">1. HTTP 入口</text>
+  <text class="small" text-anchor="middle" x="170" y="132">GET /?userId=1</text>
+
+  <rect class="mw" x="360" y="82" width="260" height="86" rx="8"/>
+  <text class="label" text-anchor="middle" x="490" y="110">2. Koa 中间件装配能力</text>
+  <text class="small" text-anchor="middle" x="490" y="134">rpcConsumers / cache / channels</text>
+  <text class="small" text-anchor="middle" x="490" y="154">按 app.use 顺序执行</text>
+
+  <rect class="box" x="720" y="82" width="230" height="64" rx="8"/>
+  <text class="label" text-anchor="middle" x="835" y="110">3. 进入 / 路由</text>
+  <text class="small" text-anchor="middle" x="835" y="132">读取 ctx.query.userId</text>
+
+  <path class="line" d="M270 114 H350"/>
+  <path class="line" d="M620 114 H710"/>
+
+  <rect class="mq" x="720" y="220" width="230" height="72" rx="8"/>
+  <text class="label" text-anchor="middle" x="835" y="248">4. 投递访问日志</text>
+  <text class="small" text-anchor="middle" x="835" y="272">sendToQueue('logger')</text>
+  <path class="line" d="M835 146 V210"/>
+
+  <rect class="cache" x="720" y="360" width="230" height="72" rx="8"/>
+  <text class="label" text-anchor="middle" x="835" y="388">5. 查询缓存</text>
+  <text class="small" text-anchor="middle" x="835" y="412">key = GET-/-userId</text>
+  <path class="line" d="M835 292 V350"/>
+
+  <polygon class="diamond" points="835,505 930,565 835,625 740,565"/>
+  <text class="label" text-anchor="middle" x="835" y="558">6. 缓存</text>
+  <text class="label" text-anchor="middle" x="835" y="580">命中？</text>
+  <path class="line" d="M835 432 V495"/>
+
+  <rect class="out" x="430" y="530" width="230" height="70" rx="8"/>
+  <text class="label" text-anchor="middle" x="545" y="558">7A. 直接返回</text>
+  <text class="small" text-anchor="middle" x="545" y="582">ctx.body = cacheData</text>
+  <path class="line" d="M740 565 H670"/>
+  <text class="yes" x="695" y="552">是</text>
+
+  <rect class="rpc" x="720" y="700" width="230" height="82" rx="8"/>
+  <text class="label" text-anchor="middle" x="835" y="728">7B. 并发 RPC 聚合</text>
+  <text class="small" text-anchor="middle" x="835" y="752">user.getUserInfo</text>
+  <text class="small" text-anchor="middle" x="835" y="770">post.getPostCount</text>
+  <path class="line" d="M835 625 V690"/>
+  <text class="no" x="850" y="660">否</text>
+
+  <rect class="box" x="430" y="705" width="230" height="72" rx="8"/>
+  <text class="label" text-anchor="middle" x="545" y="733">8. 数据处理</text>
+  <text class="small" text-anchor="middle" x="545" y="757">删除 password / 拼头像</text>
+  <path class="line" d="M720 741 H670"/>
+
+  <rect class="cache" x="120" y="705" width="220" height="72" rx="8"/>
+  <text class="label" text-anchor="middle" x="230" y="733">9. 写入缓存</text>
+  <text class="small" text-anchor="middle" x="230" y="757">MemoryStore + RedisStore</text>
+  <path class="line" d="M430 741 H350"/>
+
+  <rect class="out" x="120" y="530" width="220" height="70" rx="8"/>
+  <text class="label" text-anchor="middle" x="230" y="558">10. 返回聚合 JSON</text>
+  <text class="small" text-anchor="middle" x="230" y="582">userInfo + postCount</text>
+  <path class="line" d="M230 705 V610"/>
+  <path class="line" d="M430 565 H350"/>
+</svg>
+

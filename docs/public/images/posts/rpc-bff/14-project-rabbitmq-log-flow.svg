@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="620" viewBox="0 0 1120 620">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#334155"/></marker>
+    <style>
+      .bg{fill:#f8fafc}.title{font:700 25px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#0f172a}
+      .bff{fill:#ecfeff;stroke:#0891b2;stroke-width:2}.mq{fill:#f0fdf4;stroke:#16a34a;stroke-width:2}.file{fill:#fffbeb;stroke:#d97706;stroke-width:2}
+      .label{font:700 16px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#0f172a}.small{font:13px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#334155}.code{font:13px Menlo,Consolas,monospace;fill:#334155}
+      .line{stroke:#334155;stroke-width:2.2;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect class="bg" width="1120" height="620"/>
+  <text class="title" x="40" y="48">项目里的 RabbitMQ 日志链路</text>
+  <rect class="bff" x="80" y="150" width="250" height="110" rx="8"/>
+  <text class="label" text-anchor="middle" x="205" y="184">BFF 路由</text>
+  <text class="small" text-anchor="middle" x="205" y="212">构造访问日志 JSON</text>
+  <text class="code" text-anchor="middle" x="205" y="238">method / path / userId</text>
+  <rect class="mq" x="430" y="150" width="260" height="110" rx="8"/>
+  <text class="label" text-anchor="middle" x="560" y="184">RabbitMQ</text>
+  <text class="small" text-anchor="middle" x="560" y="212">logger 队列</text>
+  <text class="small" text-anchor="middle" x="560" y="238">先暂存消息</text>
+  <rect class="mq" x="785" y="150" width="250" height="110" rx="8"/>
+  <text class="label" text-anchor="middle" x="910" y="184">write-logger</text>
+  <text class="small" text-anchor="middle" x="910" y="212">consume 队列</text>
+  <text class="small" text-anchor="middle" x="910" y="238">处理成功后 ack</text>
+  <rect class="file" x="785" y="390" width="250" height="86" rx="8"/>
+  <text class="label" text-anchor="middle" x="910" y="424">logger.txt</text>
+  <text class="small" text-anchor="middle" x="910" y="450">一行一条访问日志</text>
+  <path class="line" d="M330 205 H420"/>
+  <text class="code" x="350" y="188">sendToQueue</text>
+  <path class="line" d="M690 205 H775"/>
+  <text class="code" x="712" y="188">consume</text>
+  <path class="line" d="M910 260 V380"/>
+  <text class="code" x="930" y="325">appendFile</text>
+  <rect class="bff" x="165" y="390" width="420" height="86" rx="8"/>
+  <text class="label" text-anchor="middle" x="375" y="424">好处：异步解耦</text>
+  <text class="small" text-anchor="middle" x="375" y="450">BFF 把日志丢进队列就可以继续响应，不必等待写文件</text>
+</svg>
+

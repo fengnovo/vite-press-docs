@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="680" viewBox="0 0 1180 680">
+  <defs>
+    <style>
+      .bg{fill:#f8fafc}.title{font:700 25px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#0f172a}
+      .card{fill:#fff;stroke:#334155;stroke-width:2}.bff{fill:#ecfeff;stroke:#0891b2}.rpc{fill:#fdf2f8;stroke:#db2777}.zk{fill:#fffbeb;stroke:#d97706}.mq{fill:#f0fdf4;stroke:#16a34a}.cache{fill:#eef2ff;stroke:#4f46e5}
+      .label{font:700 17px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#0f172a}.small{font:14px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#334155}.code{font:13px Menlo,Consolas,monospace;fill:#334155}
+    </style>
+  </defs>
+  <rect class="bg" width="1180" height="680"/>
+  <text class="title" x="40" y="48">组件速记卡</text>
+  <rect class="bff" x="70" y="105" width="300" height="150" rx="8"/>
+  <text class="label" x="95" y="140">BFF</text>
+  <text class="small" x="95" y="172">前端的统一入口</text>
+  <text class="small" x="95" y="202">负责聚合、脱敏、缓存、发日志</text>
+  <text class="code" x="95" y="232">bff/bff/index.js</text>
+  <rect class="rpc" x="440" y="105" width="300" height="150" rx="8"/>
+  <text class="label" x="465" y="140">sofa-rpc-node</text>
+  <text class="small" x="465" y="172">远程调用框架</text>
+  <text class="small" x="465" y="202">provider 发布服务，consumer 调用服务</text>
+  <text class="code" x="465" y="232">invoke(method, args)</text>
+  <rect class="zk" x="810" y="105" width="300" height="150" rx="8"/>
+  <text class="label" x="835" y="140">Zookeeper</text>
+  <text class="small" x="835" y="172">服务通讯录</text>
+  <text class="small" x="835" y="202">记录服务名和 provider 地址</text>
+  <text class="code" x="835" y="232">com.keen.user -> ip:port</text>
+  <rect class="mq" x="255" y="355" width="300" height="150" rx="8"/>
+  <text class="label" x="280" y="390">RabbitMQ / AMQP</text>
+  <text class="small" x="280" y="422">消息队列</text>
+  <text class="small" x="280" y="452">日志先入队，消费者慢慢处理</text>
+  <text class="code" x="280" y="482">sendToQueue / consume / ack</text>
+  <rect class="cache" x="625" y="355" width="300" height="150" rx="8"/>
+  <text class="label" x="650" y="390">LRU / Redis</text>
+  <text class="small" x="650" y="422">缓存</text>
+  <text class="small" x="650" y="452">命中时少查 RPC 和 MySQL</text>
+  <text class="code" x="650" y="482">ctx.cache.get / set</text>
+</svg>

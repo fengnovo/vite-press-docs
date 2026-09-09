@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="760" viewBox="0 0 1180 760">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#334155"/>
+    </marker>
+    <style>
+      .bg{fill:#f8fafc}.title{font:700 26px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#0f172a}
+      .section{fill:#fff;stroke:#cbd5e1;stroke-width:1.5}.box{fill:#eef2ff;stroke:#4f46e5;stroke-width:2}
+      .hit{fill:#f0fdf4;stroke:#16a34a;stroke-width:2}.miss{fill:#fef2f2;stroke:#dc2626;stroke-width:2}.warn{fill:#fff7ed;stroke:#ea580c;stroke-width:2}
+      .label{font:700 15px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#0f172a}.small{font:13px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#334155}
+      .sectionTitle{font:700 19px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#334155}.line{stroke:#334155;stroke-width:2.2;fill:none;marker-end:url(#arrow)}
+      .dash{stroke-dasharray:7 6}.yes{fill:#16a34a;font:700 13px Arial}.no{fill:#dc2626;font:700 13px Arial}
+    </style>
+  </defs>
+  <rect class="bg" x="0" y="0" width="1180" height="760"/>
+  <text class="title" x="40" y="46">LRU + Redis 多级缓存流程</text>
+
+  <rect class="section" x="40" y="80" width="520" height="610" rx="12"/>
+  <text class="sectionTitle" x="65" y="116">读取：ctx.cache.get(key)</text>
+
+  <rect class="box" x="175" y="150" width="240" height="62" rx="8"/>
+  <text class="label" text-anchor="middle" x="295" y="178">CacheStore.get</text>
+  <text class="small" text-anchor="middle" x="295" y="198">按 stores 顺序遍历</text>
+
+  <rect class="box" x="175" y="265" width="240" height="70" rx="8"/>
+  <text class="label" text-anchor="middle" x="295" y="294">MemoryStore</text>
+  <text class="small" text-anchor="middle" x="295" y="316">LRUCache.get(key)</text>
+
+  <polygon class="warn" points="295,385 390,445 295,505 200,445"/>
+  <text class="label" text-anchor="middle" x="295" y="440">本地</text>
+  <text class="label" text-anchor="middle" x="295" y="462">命中？</text>
+
+  <rect class="hit" x="55" y="410" width="110" height="70" rx="8"/>
+  <text class="label" text-anchor="middle" x="110" y="440">返回</text>
+  <text class="small" text-anchor="middle" x="110" y="462">value</text>
+
+  <rect class="box" x="175" y="555" width="240" height="70" rx="8"/>
+  <text class="label" text-anchor="middle" x="295" y="584">RedisStore</text>
+  <text class="small" text-anchor="middle" x="295" y="606">client.get + JSON.parse</text>
+
+  <rect class="miss" x="430" y="555" width="105" height="70" rx="8"/>
+  <text class="label" text-anchor="middle" x="482" y="584">返回</text>
+  <text class="small" text-anchor="middle" x="482" y="606">undefined</text>
+
+  <path class="line" d="M295 212 V255"/>
+  <path class="line" d="M295 335 V375"/>
+  <path class="line" d="M200 445 H175"/>
+  <text class="yes" x="178" y="432">是</text>
+  <path class="line" d="M295 505 V545"/>
+  <text class="no" x="310" y="528">否</text>
+  <path class="line dash" d="M415 590 H420"/>
+  <text class="small" x="360" y="646">Redis 命中会返回，但当前不会回填 LRU</text>
+  <path class="line" d="M415 602 H420"/>
+
+  <rect class="section" x="620" y="80" width="520" height="610" rx="12"/>
+  <text class="sectionTitle" x="645" y="116">写入：ctx.cache.set(key, value)</text>
+
+  <rect class="box" x="760" y="150" width="240" height="62" rx="8"/>
+  <text class="label" text-anchor="middle" x="880" y="178">CacheStore.set</text>
+  <text class="small" text-anchor="middle" x="880" y="198">遍历 stores 全量写入</text>
+
+  <rect class="box" x="660" y="290" width="210" height="82" rx="8"/>
+  <text class="label" text-anchor="middle" x="765" y="320">MemoryStore.set</text>
+  <text class="small" text-anchor="middle" x="765" y="344">max=100</text>
+  <text class="small" text-anchor="middle" x="765" y="362">ttl=24h</text>
+
+  <rect class="box" x="920" y="290" width="210" height="82" rx="8"/>
+  <text class="label" text-anchor="middle" x="1025" y="320">RedisStore.set</text>
+  <text class="small" text-anchor="middle" x="1025" y="344">JSON.stringify(value)</text>
+  <text class="small" text-anchor="middle" x="1025" y="362">无过期时间</text>
+
+  <rect class="warn" x="700" y="465" width="360" height="120" rx="8"/>
+  <text class="label" text-anchor="middle" x="880" y="496">当前实现的关键问题</text>
+  <text class="small" text-anchor="middle" x="880" y="524">每次请求都会 new MemoryStore</text>
+  <text class="small" text-anchor="middle" x="880" y="546">LRU 无法跨请求命中</text>
+  <text class="small" text-anchor="middle" x="880" y="568">Redis 连接也会重复创建</text>
+
+  <path class="line" d="M830 212 C790 245,770 260,765 280"/>
+  <path class="line" d="M930 212 C980 245,1020 260,1025 280"/>
+  <path class="line dash" d="M765 372 C790 420,830 440,865 455"/>
+  <path class="line dash" d="M1025 372 C1000 420,945 440,895 455"/>
+</svg>
+

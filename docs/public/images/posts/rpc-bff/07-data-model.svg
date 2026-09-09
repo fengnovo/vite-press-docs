@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="620" viewBox="0 0 1120 620">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#334155"/>
+    </marker>
+    <style>
+      .bg{fill:#f8fafc}.title{font:700 26px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#0f172a}
+      .table{fill:#fff;stroke:#334155;stroke-width:2}.head{fill:#334155}.headText{font:700 16px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#fff}
+      .cell{font:14px Menlo,Consolas,"PingFang SC","Microsoft YaHei",monospace;fill:#0f172a}.note{fill:#ecfeff;stroke:#0891b2;stroke-width:2}
+      .label{font:700 15px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#0f172a}.small{font:13px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#334155}
+      .line{stroke:#334155;stroke-width:2.2;fill:none;marker-end:url(#arrow)}.dash{stroke-dasharray:7 6}
+    </style>
+  </defs>
+  <rect class="bg" x="0" y="0" width="1120" height="620"/>
+  <text class="title" x="40" y="46">MySQL 数据模型与 BFF 聚合结果</text>
+
+  <rect class="table" x="80" y="120" width="330" height="260" rx="8"/>
+  <rect class="head" x="80" y="120" width="330" height="48" rx="8"/>
+  <text class="headText" x="105" y="151">user</text>
+  <text class="cell" x="110" y="205">id int primary key</text>
+  <text class="cell" x="110" y="238">username varchar</text>
+  <text class="cell" x="110" y="271">avatar varchar</text>
+  <text class="cell" x="110" y="304">password varchar</text>
+  <text class="cell" x="110" y="337">phone bigint</text>
+
+  <rect class="table" x="710" y="120" width="330" height="220" rx="8"/>
+  <rect class="head" x="710" y="120" width="330" height="48" rx="8"/>
+  <text class="headText" x="735" y="151">post</text>
+  <text class="cell" x="740" y="205">id int primary key</text>
+  <text class="cell" x="740" y="238">user_id varchar</text>
+  <text class="cell" x="740" y="271">title varchar</text>
+  <text class="cell" x="740" y="304">content varchar</text>
+
+  <path class="line" d="M410 238 H700"/>
+  <text class="small" text-anchor="middle" x="555" y="224">user.id = post.user_id</text>
+
+  <rect class="note" x="355" y="445" width="410" height="108" rx="8"/>
+  <text class="label" text-anchor="middle" x="560" y="476">BFF 聚合响应</text>
+  <text class="small" text-anchor="middle" x="560" y="504">user.getUserInfo(userId) -> userInfo</text>
+  <text class="small" text-anchor="middle" x="560" y="526">post.getPostCount(userId) -> postCount</text>
+
+  <path class="line dash" d="M245 380 C280 430,355 455,410 470"/>
+  <path class="line dash" d="M875 340 C820 410,755 445,710 470"/>
+</svg>

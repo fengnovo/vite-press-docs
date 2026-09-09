@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1220" height="760" viewBox="0 0 1220 760">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#334155"/></marker>
+    <style>
+      .bg{fill:#f8fafc}.title{font:700 25px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#0f172a}
+      .head{fill:#fff;stroke:#334155;stroke-width:2}.life{stroke:#cbd5e1;stroke-width:2;stroke-dasharray:6 6}.line{stroke:#334155;stroke-width:2;fill:none;marker-end:url(#arrow)}
+      .label{font:700 14px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#0f172a}.small{font:13px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#334155}
+    </style>
+  </defs>
+  <rect class="bg" width="1220" height="760"/>
+  <text class="title" x="40" y="45">一次 GET /?userId=1 的完整时序</text>
+  <g>
+    <rect class="head" x="50" y="80" width="130" height="46" rx="8"/><text class="label" text-anchor="middle" x="115" y="109">前端</text><path class="life" d="M115 126 V720"/>
+    <rect class="head" x="235" y="80" width="130" height="46" rx="8"/><text class="label" text-anchor="middle" x="300" y="109">BFF</text><path class="life" d="M300 126 V720"/>
+    <rect class="head" x="420" y="80" width="130" height="46" rx="8"/><text class="label" text-anchor="middle" x="485" y="109">缓存</text><path class="life" d="M485 126 V720"/>
+    <rect class="head" x="605" y="80" width="130" height="46" rx="8"/><text class="label" text-anchor="middle" x="670" y="109">RabbitMQ</text><path class="life" d="M670 126 V720"/>
+    <rect class="head" x="790" y="80" width="130" height="46" rx="8"/><text class="label" text-anchor="middle" x="855" y="109">user/post</text><path class="life" d="M855 126 V720"/>
+    <rect class="head" x="975" y="80" width="130" height="46" rx="8"/><text class="label" text-anchor="middle" x="1040" y="109">MySQL</text><path class="life" d="M1040 126 V720"/>
+  </g>
+  <path class="line" d="M115 160 H290"/><text class="small" x="145" y="148">1. HTTP 请求</text>
+  <path class="line" d="M300 210 H660"/><text class="small" x="360" y="198">2. 发送访问日志</text>
+  <path class="line" d="M300 265 H475"/><text class="small" x="330" y="253">3. 查 LRU / Redis</text>
+  <path class="line" d="M485 305 H310"/><text class="small" x="345" y="330">4. 未命中</text>
+  <path class="line" d="M300 380 H845"/><text class="small" x="420" y="368">5. invoke getUserInfo / getPostCount</text>
+  <path class="line" d="M855 430 H1030"/><text class="small" x="900" y="418">6. 查表</text>
+  <path class="line" d="M1040 470 H865"/><text class="small" x="900" y="495">7. 返回 rows</text>
+  <path class="line" d="M855 520 H310"/><text class="small" x="515" y="545">8. 返回 RPC 结果</text>
+  <path class="line" d="M300 590 H475"/><text class="small" x="330" y="578">9. 写缓存</text>
+  <path class="line" d="M300 650 H125"/><text class="small" x="165" y="638">10. 返回 JSON</text>
+  <path class="line" d="M670 690 H305"/><text class="small" x="410" y="715">11. write-logger 异步消费并写文件</text>
+</svg>
+

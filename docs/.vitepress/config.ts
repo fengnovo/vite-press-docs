@@ -8,6 +8,7 @@ export default defineConfig({
   description: '关于工程、产品与持续写作的个人博客',
   base,
   cleanUrls: true,
+  ignoreDeadLinks: [/^https?:\/\/localhost/],
   appearance: true,
   markdown: {
     config(md) {
@@ -42,8 +43,21 @@ export default defineConfig({
     sidebar: {
       '/posts/': [
         {
+          text: 'LLM 应用实战项目',
+          items: [
+            { text: 'LLM 应用实战项目合集', link: '/posts/llm-projects-overview' },
+            { text: '项目 1：AI 聊天助手', link: '/posts/llm-ai-chat-assistant' },
+            { text: '项目 2：AI 角色聊天引擎', link: '/posts/llm-ai-character-engine' },
+            { text: '项目 3：RAG 知识库问答系统', link: '/posts/llm-rag-knowledge-base' },
+            { text: '项目 4：Agent 任务助手', link: '/posts/llm-agent-task-assistant' },
+            { text: '项目 5：多模态内容推荐系统', link: '/posts/llm-multimodal-rag' },
+            { text: '项目 6：私有化模型部署 + 模型网关', link: '/posts/llm-model-gateway-deployment' }
+          ]
+        },
+        {
           text: '文章',
           items: [
+            { text: 'RPC 服务和高性能 BFF 层', link: '/posts/rpc-bff' },
             { text: 'Node.js 高可用实战：无状态、读写分离、缓存与熔断降级', link: '/posts/nodejs-high-availability' },
             { text: 'KUI 自研 React 组件库：从 Monorepo 到 Headless 组件和发布流水线', link: '/posts/react-kui-component-library' },
             { text: 'Simple LLM + MCP + RAG：不用框架搭一个增强型指定知识库 Agent', link: '/posts/simple-llm-mcp-rag-agent' },

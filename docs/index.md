@@ -7,6 +7,62 @@ date: 2026-02-18
   <div class="archive-item">
     <time>2026-09-09</time>
     <div>
+      <a href="posts/llm-projects-overview">LLM 应用实战项目合集</a>
+      <p class="post-meta">LLM · 项目合集 · 学习路线</p>
+    </div>
+  </div>
+  <div class="archive-item">
+    <time>2026-09-09</time>
+    <div>
+      <a href="posts/llm-ai-chat-assistant">项目 1：AI 聊天助手</a>
+      <p class="post-meta">Next.js · Vercel AI SDK · 流式输出</p>
+    </div>
+  </div>
+  <div class="archive-item">
+    <time>2026-09-09</time>
+    <div>
+      <a href="posts/llm-ai-character-engine">项目 2：AI 角色聊天引擎</a>
+      <p class="post-meta">FastAPI · 记忆系统 · 情绪状态机 · Function Calling</p>
+    </div>
+  </div>
+  <div class="archive-item">
+    <time>2026-09-09</time>
+    <div>
+      <a href="posts/llm-rag-knowledge-base">项目 3：RAG 知识库问答系统</a>
+      <p class="post-meta">RAG · LangChain · ChromaDB · FastAPI</p>
+    </div>
+  </div>
+  <div class="archive-item">
+    <time>2026-09-09</time>
+    <div>
+      <a href="posts/llm-agent-task-assistant">项目 4：Agent 任务助手</a>
+      <p class="post-meta">LangGraph · ReAct · Agent · 工具调用</p>
+    </div>
+  </div>
+  <div class="archive-item">
+    <time>2026-09-09</time>
+    <div>
+      <a href="posts/llm-multimodal-rag">项目 5：多模态内容推荐系统</a>
+      <p class="post-meta">多模态 RAG · CLIP · Qdrant · 混合检索</p>
+    </div>
+  </div>
+  <div class="archive-item">
+    <time>2026-09-09</time>
+    <div>
+      <a href="posts/llm-model-gateway-deployment">项目 6：私有化模型部署 + 模型网关</a>
+      <p class="post-meta">LiteLLM · vLLM · Ollama · 模型网关</p>
+    </div>
+  </div>
+  <div class="archive-item">
+    <time>2026-09-09</time>
+    <div>
+      <a href="posts/rpc-bff">RPC 服务和高性能 BFF 层</a>
+      <p class="post-meta">Node.js · BFF · RPC · Zookeeper · RabbitMQ</p>
+    </div>
+  </div>
+  <div class="archive-item">
+    <time>2026-09-09</time>
+    <div>
       <a href="posts/nodejs-high-availability">Node.js 高可用实战：无状态、读写分离、缓存与熔断降级</a>
       <p class="post-meta">Node.js · 高可用 · Redis · MySQL · 熔断降级</p>
     </div>

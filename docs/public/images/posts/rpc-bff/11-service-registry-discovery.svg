@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="650" viewBox="0 0 1120 650">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#334155"/></marker>
+    <style>
+      .bg{fill:#f8fafc}.title{font:700 25px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#0f172a}
+      .box{fill:#fff;stroke:#334155;stroke-width:2}.svc{fill:#fdf2f8;stroke:#db2777;stroke-width:2}.zk{fill:#fffbeb;stroke:#d97706;stroke-width:2}.bff{fill:#ecfeff;stroke:#0891b2;stroke-width:2}
+      .label{font:700 16px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#0f172a}.small{font:13px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#334155}.code{font:13px Menlo,Consolas,monospace;fill:#334155}.line{stroke:#334155;stroke-width:2.2;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect class="bg" width="1120" height="650"/>
+  <text class="title" x="40" y="48">服务注册与发现：别把地址写死，交给注册中心</text>
+  <rect class="svc" x="70" y="130" width="230" height="92" rx="8"/>
+  <text class="label" text-anchor="middle" x="185" y="164">user 服务启动</text>
+  <text class="code" text-anchor="middle" x="185" y="190">com.keen.user</text>
+  <rect class="svc" x="70" y="365" width="230" height="92" rx="8"/>
+  <text class="label" text-anchor="middle" x="185" y="399">post 服务启动</text>
+  <text class="code" text-anchor="middle" x="185" y="425">com.keen.post</text>
+  <rect class="zk" x="455" y="220" width="250" height="150" rx="8"/>
+  <text class="label" text-anchor="middle" x="580" y="252">Zookeeper</text>
+  <text class="small" text-anchor="middle" x="580" y="285">像服务通讯录</text>
+  <text class="code" text-anchor="middle" x="580" y="318">user -> 172.x:10000</text>
+  <text class="code" text-anchor="middle" x="580" y="342">post -> 172.x:20000</text>
+  <path class="line" d="M300 176 C365 190,390 230,445 255"/>
+  <text class="small" x="330" y="185">注册地址</text>
+  <path class="line" d="M300 410 C370 398,405 360,445 332"/>
+  <text class="small" x="330" y="407">注册地址</text>
+  <rect class="bff" x="835" y="250" width="230" height="92" rx="8"/>
+  <text class="label" text-anchor="middle" x="950" y="284">BFF</text>
+  <text class="small" text-anchor="middle" x="950" y="310">想调用 user/post</text>
+  <path class="line" d="M835 282 H715"/>
+  <text class="small" x="736" y="270">查询服务地址</text>
+  <path class="line" d="M705 330 H825"/>
+  <text class="small" x="735" y="352">返回 provider 列表</text>
+  <path class="line" d="M900 342 C785 470,435 515,255 457"/>
+  <text class="small" x="585" y="525">再发起真正 RPC 调用</text>
+</svg>
+

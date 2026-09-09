@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#334155"/>
+    </marker>
+    <style>
+      .bg{fill:#f8fafc}.title{font:700 26px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#0f172a}
+      .box{fill:#fff;stroke:#334155;stroke-width:2}.bff{fill:#ecfeff;stroke:#0891b2}.cache{fill:#eef2ff;stroke:#4f46e5}
+      .queue{fill:#f0fdf4;stroke:#16a34a}.data{fill:#fffbeb;stroke:#d97706}.service{fill:#fdf2f8;stroke:#db2777}
+      .demo{fill:#f5f3ff;stroke:#7c3aed}.label{font:700 16px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#0f172a}
+      .small{font:13px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#334155}.line{stroke:#334155;stroke-width:2.2;fill:none;marker-end:url(#arrow)}
+      .dash{stroke-dasharray:7 6}.hint{font:12px Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:#475569}
+    </style>
+  </defs>
+  <rect class="bg" x="0" y="0" width="1200" height="760"/>
+  <text class="title" x="40" y="44">rpc-bff 项目总架构</text>
+
+  <rect class="box" x="40" y="92" width="170" height="80" rx="8"/>
+  <text class="label" text-anchor="middle" x="125" y="124">Browser / App</text>
+  <text class="small" text-anchor="middle" x="125" y="150">GET /?userId=1</text>
+
+  <rect class="bff" x="310" y="78" width="250" height="110" rx="8"/>
+  <text class="label" text-anchor="middle" x="435" y="112">Koa BFF :3000</text>
+  <text class="small" text-anchor="middle" x="435" y="138">logger / rpc / cache / mq</text>
+  <text class="small" text-anchor="middle" x="435" y="160">聚合 userInfo + postCount</text>
+
+  <path class="line" d="M210 132 H300"/>
+  <text class="hint" x="226" y="120">HTTP 请求</text>
+  <path class="line dash" d="M310 168 H220"/>
+  <text class="hint" x="226" y="188">JSON 响应</text>
+
+  <rect class="cache" x="705" y="52" width="160" height="70" rx="8"/>
+  <text class="label" text-anchor="middle" x="785" y="82">Memory LRU</text>
+  <text class="small" text-anchor="middle" x="785" y="104">进程内热点缓存</text>
+
+  <rect class="cache" x="955" y="52" width="160" height="70" rx="8"/>
+  <text class="label" text-anchor="middle" x="1035" y="82">Redis</text>
+  <text class="small" text-anchor="middle" x="1035" y="104">共享二级缓存</text>
+
+  <path class="line" d="M560 104 C610 78,650 78,695 86"/>
+  <text class="hint" x="590" y="70">先查本地</text>
+  <path class="line" d="M865 87 H945"/>
+  <text class="hint" x="880" y="75">未命中</text>
+
+  <rect class="data" x="705" y="194" width="190" height="78" rx="8"/>
+  <text class="label" text-anchor="middle" x="800" y="224">Zookeeper</text>
+  <text class="small" text-anchor="middle" x="800" y="248">服务注册与发现</text>
+  <path class="line" d="M560 154 C625 188,635 225,695 232"/>
+  <text class="hint" x="590" y="214">发现接口地址</text>
+
+  <rect class="service" x="705" y="340" width="210" height="88" rx="8"/>
+  <text class="label" text-anchor="middle" x="810" y="374">User RPC Service</text>
+  <text class="small" text-anchor="middle" x="810" y="398">com.keen.user</text>
+  <text class="small" text-anchor="middle" x="810" y="416">:10000 getUserInfo</text>
+
+  <rect class="service" x="705" y="492" width="210" height="88" rx="8"/>
+  <text class="label" text-anchor="middle" x="810" y="526">Post RPC Service</text>
+  <text class="small" text-anchor="middle" x="810" y="550">com.keen.post</text>
+  <text class="small" text-anchor="middle" x="810" y="568">:20000 getPostCount</text>
+
+  <rect class="data" x="990" y="418" width="150" height="86" rx="8"/>
+  <text class="label" text-anchor="middle" x="1065" y="452">MySQL</text>
+  <text class="small" text-anchor="middle" x="1065" y="476">bff.user / bff.post</text>
+
+  <path class="line" d="M560 171 C620 250,620 362,695 382"/>
+  <text class="hint" x="590" y="345">RPC invoke</text>
+  <path class="line" d="M560 179 C610 320,610 512,695 534"/>
+  <text class="hint" x="586" y="500">并发调用</text>
+  <path class="line" d="M915 384 C955 394,960 430,980 448"/>
+  <path class="line" d="M915 536 C955 524,960 492,980 474"/>
+
+  <rect class="queue" x="315" y="332" width="220" height="82" rx="8"/>
+  <text class="label" text-anchor="middle" x="425" y="364">RabbitMQ</text>
+  <text class="small" text-anchor="middle" x="425" y="390">logger 队列</text>
+  <path class="line" d="M426 188 V322"/>
+  <text class="hint" x="438" y="260">异步投递访问日志</text>
+
+  <rect class="queue" x="54" y="475" width="190" height="80" rx="8"/>
+  <text class="label" text-anchor="middle" x="149" y="508">write-logger</text>
+  <text class="small" text-anchor="middle" x="149" y="532">消费队列</text>
+  <path class="line" d="M315 396 C270 430,245 470,252 510"/>
+
+  <rect class="data" x="64" y="620" width="170" height="62" rx="8"/>
+  <text class="label" text-anchor="middle" x="149" y="656">logger.txt</text>
+  <path class="line" d="M149 555 V610"/>
+
+  <text class="label" x="690" y="665">独立 gRPC 示例</text>
+  <rect class="demo" x="690" y="690" width="130" height="44" rx="8"/>
+  <text class="small" text-anchor="middle" x="755" y="718">client.js</text>
+  <rect class="demo" x="860" y="690" width="130" height="44" rx="8"/>
+  <text class="small" text-anchor="middle" x="925" y="718">hello.proto</text>
+  <rect class="demo" x="1030" y="690" width="130" height="44" rx="8"/>
+  <text class="small" text-anchor="middle" x="1095" y="718">server.js :10086</text>
+  <path class="line" d="M820 712 H850"/>
+  <path class="line" d="M990 712 H1020"/>
+</svg>
+
